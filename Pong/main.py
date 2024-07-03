@@ -22,6 +22,14 @@ while True:
 
     hands, img = detector.findHands(img, flipType=False)
     img = cv2.addWeighted(img, 0.1, imgBackground, 0.8, 0)
+
+    if hands:
+        for hand in hands:
+            if hand['type'] == "left":
+                img = cvzone.overlayPNG(img, imgBall, (59, 100))
+
+    img = cvzone.overlayPNG(img, imgBat1, (55, 100))
+
     cv2.imshow("Image", img)
     if cv2.waitKey(1) & 0xFF == 27:
         break
