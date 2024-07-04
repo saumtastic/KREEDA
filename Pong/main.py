@@ -20,7 +20,7 @@ while True:
     _, img = cap.read()
     img = cv2.flip(img, 1)
 
-    hands, img = detector.findHands(img, flipType=False)
+    hands, img = detector.findHands(img, draw = False, flipType=False)
     img = cv2.addWeighted(img, 0.1, imgBackground, 0.8, 0)
 
     if hands:
