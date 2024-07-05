@@ -28,8 +28,7 @@ while True:
             if hand['type'] == "left":
                 img = cvzone.overlayPNG(img, imgBall, (59, 100))
 
-    img = cvzone.overlayPNG(img, imgBat1, (55, 100))
-
+    #img = cvzone.overlayPNG(img,0.2, imgBackground,0.8,0)
     cv2.imshow("Image", img)
     if cv2.waitKey(1) & 0xFF == 27:
         break
