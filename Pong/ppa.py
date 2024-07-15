@@ -93,3 +93,4 @@ class HandballGame:
         self.cap.release()
         cv2.destroyAllWindows()
         return self.score
+

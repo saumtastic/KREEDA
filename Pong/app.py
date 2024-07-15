@@ -16,7 +16,7 @@ if st.button("Start Game"):
     elif game_mode == "Play with Computer":
         score = game.play_game(mode="computer", player1=player1_name, player2="Computer")
     else:
-        # Implement private room functionality
+
         pass
 
     st.write(f"Game Over! Final Score:\n{player1_name}: {score[0]}\n{player2_name}: {score[1]}")
