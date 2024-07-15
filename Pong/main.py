@@ -7,16 +7,13 @@ cap = cv2.VideoCapture(0)
 cap.set(3, 1280)
 cap.set(4, 720)
 
-
 imgBackground = cv2.imread("Resources/Background.png")
 imgGameOver = cv2.imread("Resources/gameOver.png")
 imgBall = cv2.imread("Resources/Ball.png", cv2.IMREAD_UNCHANGED)
 imgBat1 = cv2.imread("Resources/bat1.png", cv2.IMREAD_UNCHANGED)
 imgBat2 = cv2.imread("Resources/bat2.png", cv2.IMREAD_UNCHANGED)
 
-
 detector = HandDetector(detectionCon=0.8, maxHands=2)
-
 
 ballPos = [100, 100]
 speedX = 15
@@ -29,9 +26,7 @@ while True:
     img = cv2.flip(img, 1)
     imgRaw = img.copy()
 
-
     hands, img = detector.findHands(img, flipType=False)  # with draw
-
 
     img = cv2.addWeighted(img, 0.2, imgBackground, 0.8, 0)
     if hands:
@@ -55,7 +50,6 @@ while True:
                     ballPos[0] -= 30
                     score[1] += 1
 
-
     if ballPos[0] < 40 or ballPos[0] > 1200:
         gameOver = True
 
@@ -64,16 +58,12 @@ while True:
         cv2.putText(img, str(score[1] + score[0]).zfill(2), (585, 360), cv2.FONT_HERSHEY_COMPLEX,
                     2.5, (200, 0, 200), 5)
 
-
     else:
-
-
         if ballPos[1] >= 500 or ballPos[1] <= 10:
             speedY = -speedY
 
         ballPos[0] += speedX
         ballPos[1] += speedY
-
 
         img = cvzone.overlayPNG(img, imgBall, ballPos)
 
@@ -91,3 +81,8 @@ while True:
         gameOver = False
         score = [0, 0]
         imgGameOver = cv2.imread("Resources/gameOver.png")
+    elif key == 27:
+        break
+
+cap.release()
+cv2.destroyAllWindows()
